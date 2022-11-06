@@ -1,30 +1,30 @@
-import logo from '../assets/images/logo.svg';
-import main from '../assets/images/main.svg';
+import {Logo} from '../components';
+import team_work from '../assets/images/team_work.svg';
 import styled from 'styled-components';
 import Wrapper from '../assets/wrappers/LandingPage';
+import { Link } from 'react-router-dom';
 
-import React from 'react'
 
 const Landing = () => {
   return (
     <Wrapper>
      <nav>
-          <img src={logo} alt='jobster logo' className='logo' />
+          <Logo />
      </nav>
      <div className='container page'>
           {/* info */}
           <div className='info'>
-               <h1>Job <span>Tracking</span> App</h1>
+               <h2>Trade job management software to streamline jobs, estimating & quoting.</h2>
                <p>
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                     Odit temporibus,
-                     enim ipsa, dolor aliquam mollitia dolores fugit, quidem
-                      natus sequi corporis.
-                     Et ut cupiditate ratione eius accusantium sapiente est qui?
+                    Leave the hard graft behind. If your job management system can't
+                     capture new
+                     leads as jobs, create accurate quotes and takeoffs,
+                     and dispatch instant online quotes with e-signatures, then it's
+                      time to upgrade.
                </p>
-               <button className='btn btn-hero'>Login / Register</button>
+               <Link to='/register' className='btn btn-hero'>Login / Register</Link>
           </div>
-          <img src={main} alt='job hunt' className='img main-img' />
+          <img src={team_work} alt='job hunt' className='img main-img' />
      </div>
      </Wrapper>
   )
