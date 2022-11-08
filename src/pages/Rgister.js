@@ -5,6 +5,7 @@ import FormRow from '../components/FormRow';
 import {toast} from 'react-toastify';
 import { useDispatch, useSelector } from 'react-redux';
 import { loginUser, registerUser } from '../features/user/userSlice';
+import { useNavigate } from 'react-router';
 
 const initialState = {
   name: '',
@@ -17,7 +18,7 @@ const Rgister = () => {
   const [values, setValues] = useState(initialState);
   const {user, isLoading} = useSelector(store => store.user);
   const dispatch = useDispatch();
-
+  const navigate = useNavigate();
 
   const handleChange = (e)=> {
     const name = e.target.name;
@@ -42,6 +43,14 @@ const Rgister = () => {
   const toggleMember = ()=> {
       setValues({...values, isMember: !values.isMember});
   };
+
+  useEffect(()=> {
+      if(user) {
+        setTimeout(()=> {
+            navigate('/');
+        }, 2000);
+      }
+  }, [user, navigate]);
 
   return (
     <Wrapper className='full-page'>
