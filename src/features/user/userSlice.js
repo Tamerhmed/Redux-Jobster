@@ -6,7 +6,12 @@ import {
           getUserFromLocalStorage,
           removeUserFromLocalStorage
 } from "../../utils/localStorage";
-import { loginUserThunk, registerUserThunk, updateUserThunk } from "./userThunk";
+import {
+          loginUserThunk,
+          registerUserThunk,
+          updateUserThunk,
+          clearStoreThunk,  
+} from "./userThunk";
 
 
 
@@ -31,7 +36,9 @@ export const updateUser = createAsyncThunk(
      'user/updateUser', async(user, thunkAPI)=> {
           return updateUserThunk('/auth/updateUser', user, thunkAPI )
      }
-)
+);
+
+export const clearStore = createAsyncThunk('user/clearStore', clearStoreThunk);
 
 
 const userSlice = createSlice({
@@ -94,6 +101,9 @@ const userSlice = createSlice({
             [updateUser.rejected]:(state, {payload})=> {
                state.isLoading = false;
                toast.error(payload)
+          },
+          [clearStore.rejected]: ()=> {
+               toast.error('There was an error...');
           },
      }
 
